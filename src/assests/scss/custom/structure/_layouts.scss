@@ -1,0 +1,47 @@
+body[data-layout-size='boxed'] {
+  background-color: $boxed-body-bg;
+  .page-content {
+    padding: calc(#{$header-height} + #{$grid-gutter-width}) 10px $footer-height
+      10px;
+    margin-left: $sidebar-collapsed-width;
+    margin-right: $sidebar-collapsed-width;
+  }
+  @media (max-width: 992px) {
+    .page-content {
+      padding: calc(#{$header-height} + #{$grid-gutter-width}) 10px
+        $footer-height 10px;
+      margin-left: $sidebar-collapsed-width;
+      margin-right: 30px;
+    }
+  }
+  #layout-wrapper {
+    background-color: $body-bg;
+    max-width: $boxed-layout-width;
+    margin: 0 auto;
+    box-shadow: $box-shadow;
+  }
+  .navbar-brand-box {
+    background-color: $header-bg;
+  }
+  #page-topbar {
+    max-width: $boxed-layout-width;
+    margin: 0 auto;
+  }
+  .footer {
+    margin: 0 auto;
+    max-width: calc(#{$boxed-layout-width} + #{$sidebar-width});
+  }
+
+  &.verical-collpsed {
+    .footer {
+      max-width: calc(#{$boxed-layout-width} - #{$sidebar-collapsed-width});
+    }
+  }
+}
+
+.user {
+  height: 36px;
+  width: 36px;
+  background-color: $gray-300;
+  padding: 3px;
+}
