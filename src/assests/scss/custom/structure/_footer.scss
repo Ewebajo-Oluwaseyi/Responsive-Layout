@@ -20,3 +20,9 @@
     left: $sidebar-collapsed-width;
   }
 }
+
+body[data-layout='horizontal'] {
+  .footer {
+    left: 0 !important;
+  }
+}

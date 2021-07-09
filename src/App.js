@@ -1,9 +1,26 @@
 import React from 'react';
 import "./assests/scss/app.scss";
-import Layout from './component/Layout/'
+import VerticalLayout from './component/VerticalLayout/'
+import HorizontalLayout from './component/HorizontalLayout/'
 import {connect} from 'react-redux'
 
-function App(props) {
+const App = (props) => {
+  console.log(props)
+  function getLayout() {
+    let layoutCls = VerticalLayout;
+
+    switch (props.layout.layoutType) {
+      case "horizontal" :
+        layoutCls = HorizontalLayout;
+        break;
+      default:
+        layoutCls = VerticalLayout;
+        break;
+    }
+    return layoutCls;
+  }
+
+  const Layout = getLayout()
   return (
     <React.Fragment>
       <Layout props={props}/>
@@ -17,4 +34,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, null)(App);

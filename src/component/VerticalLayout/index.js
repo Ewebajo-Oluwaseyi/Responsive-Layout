@@ -2,14 +2,14 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import Rightbar from './Rightbar'
-import MainContent from './MainContent'
+import Rightbar from '../Common/Rightbar'
+import MainContent from '../Common/MainContent'
 import {connect} from "react-redux"
 import {changeLayout, changeSidebarType, changeLayoutWidth, changeSidebarTheme} from '../../store/actions';
 
 class layout extends Component {
     constructor(props){
-        console.log(props.props.layout.showRightSidebar)
+        //console.log(props.props.layout.showRightSidebar)
         super(props);
         this.state = {
             isMobile: /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
@@ -18,6 +18,24 @@ class layout extends Component {
     }
 
     componentDidMount(){
+
+        if (this.props.isPreloader === true) {
+            document.getElementById('preloader').style.display = "block";
+            document.getElementById('status').style.display = "block";
+
+            setTimeout(function () {
+                document.getElementById('preloader').style.display = "none";
+                document.getElementById('status').style.display = 'none'
+            }, 2500)
+        }
+         else {
+            document.getElementById('preloader').style.display = "none";
+            document.getElementById('status').style.display = 'none'
+         }
+
+        document.title = "Responsive Layout";
+        window.scrollTo(0, 0);
+
         if(this.props.props.layout.leftSidebarTheme){
             this.props.changeSidebarTheme(this.props.props.layout.leftSidebarTheme)
         }
@@ -40,7 +58,19 @@ class layout extends Component {
     render(){
         return (
             <React.Fragment>
-                <div className="layout-wrapper">
+                <div id="preloader">
+                    <div id="status">
+                        <div className="spinner-chase">
+                            <div className="chase-dot"></div>
+                            <div className="chase-dot"></div>
+                            <div className="chase-dot"></div>
+                            <div className="chase-dot"></div>
+                            <div className="chase-dot"></div>
+                            <div className="chase-dot"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="layout-wrapper">
                     <Header toggleMenuCallback={this.toggleMenuCallback}/>
                     <Sidebar type={this.props.props.layout.leftSideBarType}
                     isMobile={this.state.isMobile}

@@ -510,3 +510,9 @@ body[data-sidebar-size='small'] {
     }
   }
 }
+
+body[data-layout='horizontal'] {
+  .main-content {
+    margin-left: 0 !important;
+  }
+}

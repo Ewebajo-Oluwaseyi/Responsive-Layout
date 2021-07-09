@@ -13,6 +13,7 @@
 @import 'custom/structure/sidebar';
 @import 'custom/structure/layouts';
 @import 'custom/structure/right-sidebar';
+@import 'custom/structure/navbar';
 
 // Components
 @import 'custom/components/waves';
@@ -29,3 +30,5 @@
 
 @import './bootstrap.scss';
 @import './icons.scss';
+
+@import 'custom/plugins/apexcharts';

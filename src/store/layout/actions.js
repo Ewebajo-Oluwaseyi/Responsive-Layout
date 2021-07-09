@@ -6,12 +6,18 @@ import {
     SHOW_SIDEBAR,
     CHANGE_SIDEBAT_THEME,
     SHOW_RIGHT_SIDEBAR,
-    CHANGE_TOPBAR_THEME
+    CHANGE_TOPBAR_THEME,
+    CHANGE_PRELOADER
 } from './actionTypes'
 
 export const changeLayout = layout => ({
     type: CHANGE_LAYOUT,
     payload: layout
+})
+
+export const changePreloader = layout => ({
+    type: CHANGE_PRELOADER,
+    preloader: layout
 })
 
 export const changeTopbarTheme = topbarTheme => ({

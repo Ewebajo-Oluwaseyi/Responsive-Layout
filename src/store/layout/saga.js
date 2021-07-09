@@ -1,5 +1,5 @@
 import {
-    TOGGLE_LEFTMENU,
+    CHANGE_LAYOUT,
     CHANGE_SIDEBAR_TYPE,
     CHANGE_LAYOUT_WIDTH,
     CHANGE_SIDEBAT_THEME,
@@ -9,7 +9,8 @@ import {
 import { all, call, fork, takeEvery, put } from "redux-saga/effects";
 
 import {
-    changeSidebarType as changeSidebarTypeAction
+    changeSidebarType as changeSidebarTypeAction,
+    changeTopbarTheme as changeTopbarThemeAction
 } from './actions';
 
 function changeBodyAttribute(attribute, value) {
@@ -34,6 +35,20 @@ function manageBodyClass(cssClass, action = "toggle"){
     return true;
 }
 
+function* changeLayout({payload: layout}) {
+    try {
+        if (layout === 'horizontal') {
+            yield put(changeTopbarThemeAction('dark'));
+            document.body.removeAttribute('data-sidebar')
+            document.body.removeAttribute('data-sidebar-size');
+        } else {
+            yield put(changeTopbarThemeAction('light'))
+        }
+        yield call(changeBodyAttribute, "data-layout" , layout)
+    } catch (error) {
+
+    }
+}
 
 function* changeLayoutWidth({payload: width}){
     try {
@@ -103,7 +118,9 @@ function* showRightSidebar() {
     }
 }
 
-
+export function* watchChangeLayoutType() {
+    yield takeEvery(CHANGE_LAYOUT, changeLayout);
+}
 export function* watchChangeLeftSidebarType() {
     yield takeEvery(CHANGE_SIDEBAR_TYPE, changeLeftSidebarType)
 }
@@ -122,6 +139,7 @@ export function* watchChangeTopbarTheme(){
 
 function* LayoutSaga() {
     yield all([
+        fork(watchChangeLayoutType),
         fork(watchChangeLeftSidebarType),
         fork(watchChangeLayoutWidth),
         fork(watchChangeLeftSidebarTheme),

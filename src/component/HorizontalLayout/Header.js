@@ -13,16 +13,7 @@ function Header(props) {
 
     const [menu, setMenu] = useState(false)
 
-    const isMobile =  /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    function tToggle() {
-        props.toggleLeftmenu(!props.leftMenu);
-        if (props.leftSideBarType === "default"){
-            props.changeSidebarType("condensed", isMobile);
-        } else if (props.leftSideBarType === "condensed"){
-            props.changeSidebarType("default", isMobile)
-        }
-    }
     return (
         <React.Fragment>
             <header>
@@ -31,32 +22,50 @@ function Header(props) {
                     <div className="d-flex">
                         <div className="navbar-brand-box">
                             <Link to="!#" className="logo">
-                                <span className="logo-lg">
+                               { /*<span className="logo-lg">
                                     <img src={logo} alt="" height="40" />
                                 </span>
                                 <span className="logo-sm">
                                     <img src={logo} alt="" height="30" width="30"/>
-                                </span>
+    </span>*/}
                             </Link>
                         </div>
-                        <buttton type="button" onClick={() => tToggle()} className="btn btn-sm px-3 mt-3 header-item">
+                        <buttton
+                            type="button"
+                            onClick={() => props.toggleLeftmenu(!props.leftMenu)}
+                            className="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                            data-toggle="collapse"
+                            data-target="#topnav-menu-content"
+                            >
                         <span style={{color: 'blue'}}>
                         <i className="fas fa-angle-left mx-2"></i>
                         </span>
                         <i className="fa fa-2x fa-bars mt-1"></i>
                         </buttton>
-                        <div className="d-flex d-inline-block px-3 mt-1 header-item header-item-dark">
-                            <button onClick={() => {setSearch(!search)}} type="button" className="btn noti-icon" id="page-header-search">
+
+                        <form className="app-search d-none d-lg-block">
+                            <div className="position-relative">
+                                <input type="text" className="form-control" placeholder="Search.."/>
+                                <span className="bx bx-search-alt"></span>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                    <div className="d-flex">
+                        <div className="dropdown d-inline-block d-lg-none ml-2">
+                            <button onClick={() => {setSearch(!search)}} type="button" className="btn noti-icon header-item waves-effect" id="page-header-search">
                             <i className="mdi mdi-magnify"></i>
                             </button>
 
-                            <div className={search ? "p-0" :  "d-none"} aria-labelledby="page-header-search">
-                                <form className="mt-3 px-3">
+                            <div className={search ? "dropdown-menu dropdown-menu-lg dropdown-menu-right p-0 show" :  "dropdown-menu dropdown-menu-lg dropdown-menu-right p-0 "} aria-labelledby="page-header-search">
+                                <form className="p-3">
                                     <div className="form-group m-0">
                                         <div className="input-group">
                                             <input type="text" className="form-control" placeholder="Search.."></input>
                                             <div className="input-grroup-append">
-                                                <button className="btn btn-primary"><i className="mdi mdi-magnify"></i></button>
+                                                <button className="btn btn-primary" type="submit"><i className="mdi mdi-magnify"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -64,10 +73,6 @@ function Header(props) {
                             </div>
 
                         </div>
-                    </div>
-
-
-                    <div className="d-flex">
                         <Dropdown
                             isOpen={menu}
                             toggle={() => setMenu(!menu)}

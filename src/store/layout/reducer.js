@@ -6,7 +6,8 @@ import {
     SHOW_SIDEBAR,
     CHANGE_SIDEBAT_THEME,
     SHOW_RIGHT_SIDEBAR,
-    CHANGE_TOPBAR_THEME
+    CHANGE_TOPBAR_THEME,
+    CHANGE_PRELOADER
 } from './actionTypes'
 
 
@@ -19,7 +20,8 @@ const INIT_STATE = {
     isMobile: false,
     showSidebar: true,
     leftSidebarTheme: "dark",
-    topbarTheme: "light"
+    topbarTheme: "light",
+    isPreloader: false
 }
 
 const Layout = (state = INIT_STATE, action) => {
@@ -34,6 +36,11 @@ const Layout = (state = INIT_STATE, action) => {
             return{
                 ...state,
                 layoutType: action.payload
+            }
+        case CHANGE_PRELOADER:
+            return {
+                ...state,
+                isPreloader: action.payload
             }
         case CHANGE_SIDEBAR_TYPE:
             return{

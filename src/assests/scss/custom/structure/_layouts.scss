@@ -45,3 +45,13 @@ body[data-layout-size='boxed'] {
   background-color: $gray-300;
   padding: 3px;
 }
+body[data-layout='horizontal'][data-layout-size='boxed'] {
+  #page-topbar,
+  #layout-wrapper,
+  .footer {
+    max-width: 100%;
+  }
+  .navbar-header .container-fluid {
+    max-width: $boxed-layout-width;
+  }
+}

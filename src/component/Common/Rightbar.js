@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SimpleBar from 'simplebar-react'
-import { changeTopbarTheme, toggleLeftmenu, changeSidebarType, showRightSidebarAction, changeLayoutWidth, changeSidebarTheme } from '../../store/actions';
+import { changeLayout, changeTopbarTheme, toggleLeftmenu, changeSidebarType, showRightSidebarAction, changeLayoutWidth, changeSidebarTheme } from '../../store/actions';
 import {connect} from 'react-redux'
 
 function Rightbar(props) {
@@ -20,8 +20,31 @@ function Rightbar(props) {
                         </div>
 
                         <hr className="my-0"/>
-
                         <div className="p-4">
+                            <div className="radio-toolbar">
+                                <span className="mb-2 d-block" >Layouts</span>
+                                <input
+                                    type="radio"
+                                    id="radioVertical"
+                                    name="radioVertical"
+                                    value="vertical"
+                                    checked={props.layoutType === "vertical"}
+                                    onChange={(e) => {if (e.target.checked) {props.changeLayout(e.target.value)}}}
+                                />
+                                <label htmlFor="radioVertical">Vertical</label>
+                                {"   "}
+                                <input
+                                    type="radio"
+                                    id="radioHorizontal"
+                                    name="radioHorizontal"
+                                    value="horizontal"
+                                    checked={props.layoutWidth === "horizontal"}
+                                    onChange={(e) => {if (e.target.checked) {props.changeLayout(e.target.value)}}}
+                                />
+                                <label htmlFor="radioHorizontal">Horizontal</label>
+                            </div>
+                            <hr className="mt-1"/>
+
                             <div className="radio-toolbar">
                                 <span className="mb-2 d-block" id="radio-title">Layout-Width</span>
                                 <input
@@ -67,7 +90,23 @@ function Rightbar(props) {
                                     onChange={(e) => {if (e.target.checked) {props.changeTopbarTheme(e.target.value)}}}
                                 />
                                 <label htmlFor="radioThemeDark">Dark</label>
+                                {"   "}
+                                {props.layoutType === "vertical" ? null :
+                                    <>
+                                       <input
+                                        type="radio"
+                                        id="radioThemeColored"
+                                        name="radioTheme"
+                                        value="colored"
+                                        checked={props.topbarTheme === "colored"}
+                                        onChange={(e) => {if (e.target.checked) {props.changeTopbarTheme(e.target.value)}}}
+                                        />
+                                    <label htmlFor="radioThemeColored">Colored</label>
+                                    </>
+
+                                }
                             </div>
+                            {props.layoutType === "vertical" ? <>
                             <hr className="mt-1"/>
                             <div className="radio-toolbar">
                             <span className="mb-2 d-block" id="radio-title">Left Sidebar Type</span>
@@ -100,8 +139,9 @@ function Rightbar(props) {
                                     checked={props.leftSideBarType === "icon"}
                                     onChange={(e) => {if (e.target.checked) {props.changeSidebarType(e.target.value)}}}
                                 />
-                                <label htmlFor="sidebarCompact">Icon</label>
+                                <label htmlFor="sidebarIcon">Icon</label>
                             </div>
+                            </> : null}
 
                             <hr className="mt-1"/>
                             <div className="radio-toolbar">
@@ -114,7 +154,7 @@ function Rightbar(props) {
                                     checked={props.leftSidebarTheme === "light"}
                                     onChange={(e) => {if (e.target.checked) {props.changeSidebarTheme(e.target.value)}}}
                                 />
-                                <label htmlFor="sidebarDefault">Light</label>
+                                <label htmlFor="leftsidebarThemeLight">Light</label>
                                 {" "}
                                 <input
                                     type="radio"
@@ -124,7 +164,7 @@ function Rightbar(props) {
                                     checked={props.leftSidebarTheme === "dark"}
                                     onChange={(e) => {if (e.target.checked) {props.changeSidebarTheme(e.target.value)}}}
                                 />
-                                <label htmlFor="sidebarDefault">Dark</label>
+                                <label htmlFor="leftsidebarThemeDark">Dark</label>
                                 {" "}
                                 <input
                                     type="radio"
@@ -134,7 +174,7 @@ function Rightbar(props) {
                                     checked={props.leftSidebarTheme === "colored"}
                                     onChange={(e) => {if (e.target.checked) {props.changeSidebarTheme(e.target.value)}}}
                                 />
-                                <label htmlFor="sidebarDefault">Colored</label>
+                                <label htmlFor="leftsidebarThemeColored">Colored</label>
 
 
                             </div>
@@ -148,8 +188,8 @@ function Rightbar(props) {
 }
 
 const mapStatetoProps = state => {
-    const {leftSideBarType, leftMenu, showRightSidebar, layoutWidth, topbarTheme, leftSidebarTheme} = state.Layout;
-    return {leftSideBarType, leftMenu, showRightSidebar, layoutWidth, topbarTheme, leftSidebarTheme}
+    const {layoutType, leftSideBarType, leftMenu, showRightSidebar, layoutWidth, topbarTheme, leftSidebarTheme} = state.Layout;
+    return {layoutType, leftSideBarType, leftMenu, showRightSidebar, layoutWidth, topbarTheme, leftSidebarTheme}
 }
 
-export default connect(mapStatetoProps, {changeTopbarTheme, toggleLeftmenu, changeSidebarType,showRightSidebarAction, changeLayoutWidth, changeSidebarTheme})(Rightbar)
+export default connect(mapStatetoProps, {changeLayout, changeTopbarTheme, toggleLeftmenu, changeSidebarType,showRightSidebarAction, changeLayoutWidth, changeSidebarTheme})(Rightbar)
