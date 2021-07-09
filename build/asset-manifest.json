@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Responsive-Layout/static/css/main.93b9db3a.chunk.css",
+    "main.js": "/Responsive-Layout/static/js/main.88952a14.chunk.js",
+    "main.js.map": "/Responsive-Layout/static/js/main.88952a14.chunk.js.map",
+    "runtime-main.js": "/Responsive-Layout/static/js/runtime-main.ee2cfcf1.js",
+    "runtime-main.js.map": "/Responsive-Layout/static/js/runtime-main.ee2cfcf1.js.map",
+    "static/js/2.8f73ef89.chunk.js": "/Responsive-Layout/static/js/2.8f73ef89.chunk.js",
+    "static/js/2.8f73ef89.chunk.js.map": "/Responsive-Layout/static/js/2.8f73ef89.chunk.js.map",
+    "index.html": "/Responsive-Layout/index.html",
+    "static/css/main.93b9db3a.chunk.css.map": "/Responsive-Layout/static/css/main.93b9db3a.chunk.css.map",
+    "static/js/2.8f73ef89.chunk.js.LICENSE.txt": "/Responsive-Layout/static/js/2.8f73ef89.chunk.js.LICENSE.txt",
+    "static/media/avatar-1.3921191a.jpg": "/Responsive-Layout/static/media/avatar-1.3921191a.jpg",
+    "static/media/avatar-2.feb0f89d.jpg": "/Responsive-Layout/static/media/avatar-2.feb0f89d.jpg",
+    "static/media/avatar-3.2cfd5ba6.jpg": "/Responsive-Layout/static/media/avatar-3.2cfd5ba6.jpg",
+    "static/media/app.scss": "/Responsive-Layout/static/media/materialdesignicons-webfont.f60b16c8.ttf",
+    "static/media/img-1.596896b8.png": "/Responsive-Layout/static/media/img-1.596896b8.png",
+    "static/media/logo.98b7eaef.jpg": "/Responsive-Layout/static/media/logo.98b7eaef.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ee2cfcf1.js",
+    "static/js/2.8f73ef89.chunk.js",
+    "static/css/main.93b9db3a.chunk.css",
+    "static/js/main.88952a14.chunk.js"
+  ]
+}
