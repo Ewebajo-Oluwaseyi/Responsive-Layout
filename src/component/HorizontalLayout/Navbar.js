@@ -4,12 +4,13 @@ import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 const Navbar = (props) => {
+
     return(
         <React.Fragment>
             <div className="topnav">
                 <div className="container-fluid">
                     <nav className="navbar navbar-light navbar-expand-lg topnav-menu">
-                        <Collapse isOpen={props.leftMenu} className="navbar-collapse" id="topnav-menu-content">
+                        <Collapse className="navbar-collapse" id="topnav-menu-content">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
                                     <Link className="nav-link">

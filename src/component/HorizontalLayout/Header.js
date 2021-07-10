@@ -30,19 +30,14 @@ function Header(props) {
     </span>*/}
                             </Link>
                         </div>
-                        <buttton
+                        <button
                             type="button"
-                            onClick={() => props.toggleLeftmenu(!props.leftMenu)}
                             className="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
                             data-toggle="collapse"
-                            data-target="#topnav-menu-content"
-                            >
-                        <span style={{color: 'blue'}}>
-                        <i className="fas fa-angle-left mx-2"></i>
-                        </span>
-                        <i className="fa fa-2x fa-bars mt-1"></i>
-                        </buttton>
-
+                             onClick={() => { props.toggleLeftmenu(!props.leftMenu); }}
+                            data-target="#topnav-menu-content">
+                            <i className="fa fa-fw fa-bars"></i>
+                        </button>
                         <form className="app-search d-none d-lg-block">
                             <div className="position-relative">
                                 <input type="text" className="form-control" placeholder="Search.."/>
